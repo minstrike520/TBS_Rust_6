@@ -1,14 +1,14 @@
 use crate::game::tools;
 pub struct Attribute {
-    pub base: i32,
+    pub base: u32,
     pub multiplier_percentage: i32,
     pub addend: i32,
 }
 impl Attribute {
-    fn new(base: i32) -> Self {
+    fn new(base: u32) -> Self {
         Self { base, multiplier_percentage: 0, addend: 0 }
     }
-    pub fn get(&self) -> i32 {
+    pub fn get(&self) -> u32 {
         tools::tune(self.base, self.multiplier_percentage, self.addend)
     }
     pub fn set(&mut self, multiplier_percentage:i32, addend:i32) {
@@ -26,7 +26,7 @@ pub struct CharacterAttributes {
     pub mhp: Attribute,
 }
 impl CharacterAttributes {
-    fn new(i_atk: i32, i_spd: i32, i_mhp: i32) -> Self {
+    fn new(i_atk: u32, i_spd: u32, i_mhp: u32) -> Self {
         let atk = Attribute::new(i_atk);
         let spd = Attribute::new(i_spd);
         let mhp = Attribute::new(i_mhp);
@@ -35,26 +35,26 @@ impl CharacterAttributes {
 }
 
 pub struct CharacterStat {
-    max: i32,
-    value: i32,
+    max: u32,
+    value: u32,
 }
 
 impl CharacterStat {
-    pub fn new(max: i32) -> Self { Self { max, value: max } }
-    pub fn get(&self) -> i32 { self.value }
-    pub fn add(&mut self, val: i32) {
+    pub fn new(max: u32) -> Self { Self { max, value: max } }
+    pub fn get(&self) -> u32 { self.value }
+    pub fn add(&mut self, val: u32) {
         if self.value + val > self.max { self.value = self.max; }
         else { self.value += val; }
     }
-    pub fn cost(&mut self, val: i32) {
-        if self.value - val < 0 { self.value = 0; }
+    pub fn cost(&mut self, val: u32) {
+        if (self.value as i32 - val as i32) < 0 { self.value = 0; }
         else { self.value -= val; }
     }
-    pub fn set_max(&mut self, after: i32) {
-        let before: i32 = self.max;
+    pub fn set_max(&mut self, after: u32) {
+        let before: u32 = self.max;
         self.max = after;
         let scale = after as f32 / before as f32;
-        self.value = (self.value as f32 * scale + 0.5).floor() as i32;
+        self.value = (self.value as f32 * scale + 0.5).floor() as u32;
     }
 }
 
@@ -65,7 +65,7 @@ pub struct Character {
 }
 
 impl Character {
-    pub fn new(id: i32, i_atk: i32, i_spd: i32, i_mhp: i32) -> Self {
+    pub fn new(id: i32, i_atk: u32, i_spd: u32, i_mhp: u32) -> Self {
         Self {
             id,
             attributes: CharacterAttributes::new ( i_atk, i_spd, i_mhp ),
