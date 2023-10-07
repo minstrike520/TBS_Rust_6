@@ -32,27 +32,15 @@ pub struct CharacterStat {
 }
 
 impl CharacterStat {
-    pub fn new(max: i32) -> Self {
-        Self { max, value: max }
-    }
-    pub fn get(&self) -> i32 {
-        self.value
-    }
+    pub fn new(max: i32) -> Self { Self { max, value: max } }
+    pub fn get(&self) -> i32 { self.value }
     pub fn add(&mut self, val: i32) {
-        if self.value + val > self.max {
-            self.value = self.max;
-        }
-        else {
-            self.value += val;
-        }
+        if self.value + val > self.max { self.value = self.max; }
+        else { self.value += val; }
     }
     pub fn cost(&mut self, val: i32) {
-        if self.value - val < 0 {
-            self.value = 0;
-        }
-        else {
-            self.value -= val;
-        }
+        if self.value - val < 0 { self.value = 0; }
+        else { self.value -= val; }
     }
 }
 
