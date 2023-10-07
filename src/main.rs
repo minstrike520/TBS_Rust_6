@@ -37,4 +37,5 @@ fn normal_attack_test() {
 fn main() {
     normal_attack_test();
     character_stat_test();
+    tune_test();
 }
