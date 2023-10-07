@@ -70,6 +70,11 @@ impl std::fmt::Debug for Character {
         .finish()
     }
 }
+impl PartialEq for Character {
+    fn eq(&self, other: &Self) -> bool {
+        self.id == other.id
+    }
+}
 
 impl Character {
     pub fn new(id: i32, i_atk: u32, i_spd: u32, i_mhp: u32) -> Self {
