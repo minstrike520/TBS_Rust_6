@@ -12,7 +12,7 @@ mod game;
             ("spd", vec![ TunerPerc(30), TunerFlat(5) ])
         ]) 
 */
-fn tune_test() {
+fn tune_tool_test() {
     assert_eq!(tune(70, 50, 0), 105);
 }
 
@@ -46,6 +46,6 @@ fn normal_attack_test() {
 fn main() {
     normal_attack_test();
     character_stat_test();
-    tune_test();
+    tune_tool_test();
     attribute_set_and_reset_test();
 }
