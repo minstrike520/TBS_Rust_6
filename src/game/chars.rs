@@ -1,22 +1,22 @@
 use crate::game::tools;
 pub struct Attribute {
     pub base: u32,
-    pub multiplier_percentage: i32,
+    pub addition_percentage: i32,
     pub addend: i32,
 }
 impl Attribute {
     fn new(base: u32) -> Self {
-        Self { base, multiplier_percentage: 0, addend: 0 }
+        Self { base, addition_percentage: 0, addend: 0 }
     }
     pub fn get(&self) -> u32 {
-        tools::tune(self.base, self.multiplier_percentage, self.addend)
+        tools::tune(self.base, self.addition_percentage, self.addend)
     }
-    pub fn set(&mut self, multiplier_percentage:i32, addend:i32) {
-        self.multiplier_percentage = multiplier_percentage;
+    pub fn set(&mut self, addition_percentage:i32, addend:i32) {
+        self.addition_percentage = addition_percentage;
         self.addend = addend;
     }
     pub fn reset(&mut self) {
-        self.multiplier_percentage = 0;
+        self.addition_percentage = 0;
         self.addend = 0;
     }
 }
@@ -72,8 +72,8 @@ impl Character {
             hp: CharacterStat::new(i_mhp)
         }
     }
-    pub fn tune_mhp(&mut self, multiplier_percentage: i32, addend: i32) {
-        self.attributes.mhp.set(multiplier_percentage, addend);
+    pub fn tune_mhp(&mut self, addition_percentage: i32, addend: i32) {
+        self.attributes.mhp.set(addition_percentage, addend);
         self.hp.set_max(self.attributes.mhp.get());
     }
     pub fn reset_mhp(&mut self) {
