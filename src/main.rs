@@ -16,6 +16,16 @@ fn tune_test() {
     assert_eq!(tune(70, 50, 0), 105);
 }
 
+fn character_stat_test() {
+    let mut c1 = game::chars::Character::new(1, 70, 100, 2000);
+    c1.hp.cost(20);
+    assert_eq!(c1.hp.get(), 1980);
+    c1.hp.add(1000);
+    assert_eq!(c1.hp.get(), 2000);
+    c1.hp.cost(10000);
+    assert_eq!(c1.hp.get(), 0);
+}
+
 fn normal_attack_test() {
     let c1 = game::chars::Character::new(1, 70, 100, 2000);
     assert_eq!(c1.attributes.atk.get(), 70);
@@ -25,6 +35,6 @@ fn normal_attack_test() {
 }
 
 fn main() {
-    normal_attack_test()
-    
+    normal_attack_test();
+    character_stat_test();
 }
