@@ -26,10 +26,40 @@ impl CharacterAttributes {
     }
 }
 
+pub struct CharacterStat {
+    max: i32,
+    value: i32,
+}
+
+impl CharacterStat {
+    pub fn new(max: i32) -> Self {
+        Self { max, value: max }
+    }
+    pub fn get(&self) -> i32 {
+        self.value
+    }
+    pub fn add(&mut self, val: i32) {
+        if self.value + val > self.max {
+            self.value = self.max;
+        }
+        else {
+            self.value += val;
+        }
+    }
+    pub fn cost(&mut self, val: i32) {
+        if self.value - val < 0 {
+            self.value = 0;
+        }
+        else {
+            self.value -= val;
+        }
+    }
+}
+
 pub struct Character {
     pub id: i32,
     pub attributes: CharacterAttributes,
-    pub hp: i32,
+    pub hp: CharacterStat,
 }
 
 impl Character {
@@ -37,7 +67,7 @@ impl Character {
         Self {
             id,
             attributes: CharacterAttributes::new ( i_atk, i_spd, i_mhp ),
-            hp: i_mhp
+            hp: CharacterStat::new(i_mhp)
         }
     }
 }
