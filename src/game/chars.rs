@@ -1,8 +1,8 @@
 use crate::game::tools;
 pub struct Attribute {
     pub base: i32,
-    multiplier_percentage: i32,
-    addend: i32,
+    pub multiplier_percentage: i32,
+    pub addend: i32,
 }
 impl Attribute {
     fn new(base: i32) -> Self {
