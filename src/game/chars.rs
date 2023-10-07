@@ -11,6 +11,14 @@ impl Attribute {
     pub fn get(&self) -> i32 {
         tools::tune(self.base, self.multiplier_percentage, self.addend)
     }
+    pub fn set(&mut self, multiplier_percentage:i32, addend:i32) {
+        self.multiplier_percentage = multiplier_percentage;
+        self.addend = addend;
+    }
+    pub fn reset(&mut self) {
+        self.multiplier_percentage = 0;
+        self.addend = 0;
+    }
 }
 pub struct CharacterAttributes {
     pub atk: Attribute,
