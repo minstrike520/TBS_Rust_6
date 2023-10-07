@@ -63,6 +63,13 @@ pub struct Character {
     pub attributes: CharacterAttributes,
     pub hp: CharacterStat,
 }
+impl std::fmt::Debug for Character {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Character")
+        .field("id", &self.id)
+        .finish()
+    }
+}
 
 impl Character {
     pub fn new(id: i32, i_atk: u32, i_spd: u32, i_mhp: u32) -> Self {
