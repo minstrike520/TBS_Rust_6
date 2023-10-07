@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+use crate::game::tools::tune;
+
 mod game;
 
 // HashMap<&str, Vec<T: Tuner> >
@@ -10,6 +12,9 @@ mod game;
             ("spd", vec![ TunerPerc(30), TunerFlat(5) ])
         ]) 
 */
+fn tune_test() {
+    assert_eq!(tune(70, 50, 0), 105);
+}
 
 fn normal_attack_test() {
     let c1 = game::chars::Character::new(1, 70, 100, 2000);
