@@ -1,0 +1,1 @@
+pub const INIT_ACTV: u32 = 10000;
