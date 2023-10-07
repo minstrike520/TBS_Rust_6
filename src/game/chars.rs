@@ -72,4 +72,12 @@ impl Character {
             hp: CharacterStat::new(i_mhp)
         }
     }
+    pub fn tune_mhp(&mut self, multiplier_percentage: i32, addend: i32) {
+        self.attributes.mhp.set(multiplier_percentage, addend);
+        self.hp.set_max(self.attributes.mhp.get());
+    }
+    pub fn reset_mhp(&mut self) {
+        self.attributes.mhp.reset();
+        self.hp.set_max(self.attributes.mhp.get());
+    }
 }
