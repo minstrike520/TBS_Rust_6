@@ -84,6 +84,11 @@ impl Character {
             hp: CharacterStat::new(i_mhp)
         }
     }
+    pub fn mock_by_id(id: i32) -> Self {
+        Self::new(id, 0, 0, 0)
+    }
+    
+
     pub fn tune_mhp(&mut self, addition_percentage: i32, addend: i32) {
         self.attributes.mhp.set(addition_percentage, addend);
         self.hp.set_max(self.attributes.mhp.get());
