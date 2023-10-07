@@ -50,6 +50,12 @@ impl CharacterStat {
         if self.value - val < 0 { self.value = 0; }
         else { self.value -= val; }
     }
+    pub fn set_max(&mut self, after: i32) {
+        let before: i32 = self.max;
+        self.max = after;
+        let scale = after as f32 / before as f32;
+        self.value = (self.value as f32 * scale + 0.5).floor() as i32;
+    }
 }
 
 pub struct Character {
