@@ -5,6 +5,7 @@ pub fn test_all() {
     character_stat_test();
     character_stat_set_max_test();
     character_tune_and_reset_mhp_test();
+    character_steps_test();
 
 }
 
@@ -45,4 +46,16 @@ fn character_tune_and_reset_mhp_test() {
     assert_eq!(c1.hp.get(), 2160);
     c1.reset_mhp();
     assert_eq!(c1.hp.get(), 1800);
+}
+
+fn character_steps_test() {
+    let mut c1 = chars::Character::new(1, 70, 100, 2000);
+    assert_eq!(c1.get_left_steps(), 100);
+    c1.step(50);
+    assert_eq!(c1.get_left_steps(), 50);
+    assert_eq!(c1.actv.get(), 5000);
+    c1.step_to_front();
+    assert_eq!(c1.get_left_steps(), 0);
+    c1.actv.reset();
+    assert_eq!(c1.get_left_steps(), 100);
 }

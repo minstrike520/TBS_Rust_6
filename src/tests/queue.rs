@@ -3,6 +3,8 @@ use crate::game::{ queue, chars };
 pub fn test_all() {
     queue_sort_by_id_test();
     queue_character_partial_eq_test();
+    queue_sort_by_left_steps_test();
+    queue_proceed_test();
 }
 
 fn queue_sort_by_id_test() {
@@ -30,4 +32,30 @@ fn queue_character_partial_eq_test() {
         chars::Character::new(3, 150, 990, 205),
         chars::Character::new(2, 10, 10, 86),
     ])
+}
+
+fn queue_sort_by_left_steps_test() {
+    let mut q1 = queue::CharacterQueue( vec![
+        chars::Character::new(5, 10, 20, 100),
+        chars::Character::new(6, 10, 35, 100),
+        chars::Character::new(2, 10, 15, 100),
+    ]);
+    q1.sort_by_left_steps();
+    assert_eq!(q1.0, vec![
+        chars::Character::new(6, 10, 10, 100),
+        chars::Character::new(5, 10, 10, 100),
+        chars::Character::new(2, 10, 10, 100),
+    ])
+}
+
+fn queue_proceed_test() {
+    let mut q1 = queue::CharacterQueue( vec![
+        chars::Character::new(5, 10, 20, 100),
+        chars::Character::new(6, 10, 50, 100),
+        chars::Character::new(2, 10, 19, 100),
+    ]);
+    q1.proceed();
+    assert_eq!(q1.0[0], chars::Character::mock_by_id(5));
+    q1.proceed();
+    assert_eq!(q1.0[0], chars::Character::mock_by_id(2));
 }
