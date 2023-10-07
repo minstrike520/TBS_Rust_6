@@ -35,6 +35,16 @@ fn character_stat_test() {
     assert_eq!(c1.hp.get(), 0);
 }
 
+fn character_stat_set_max_test() {
+    let mut c1 = game::chars::Character::new(1, 70, 100, 2000);
+    c1.hp.set_max(2400);
+    assert_eq!(c1.hp.get(), 2400);
+    c1.hp.cost(400);
+    assert_eq!(c1.hp.get(), 2000);
+    c1.hp.set_max(1200);
+    assert_eq!(c1.hp.get(), 1000);
+}
+
 fn normal_attack_test() {
     let c1 = game::chars::Character::new(1, 70, 100, 2000);
     assert_eq!(c1.attributes.atk.get(), 70);
@@ -46,6 +56,7 @@ fn normal_attack_test() {
 fn main() {
     normal_attack_test();
     character_stat_test();
+    character_stat_set_max_test();
     tune_tool_test();
     attribute_set_and_reset_test();
 }
