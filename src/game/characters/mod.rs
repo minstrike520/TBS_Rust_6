@@ -2,6 +2,7 @@ pub mod attribute;
 pub mod stat;
 pub mod action_value;
 pub mod queue;
+pub mod effects;
 
 use crate::game::constants;
 use attribute::IAttribute;
