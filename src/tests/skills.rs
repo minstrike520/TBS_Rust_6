@@ -19,3 +19,9 @@ fn instant_regen_test() {
     skills::instant_regen(&mut c1);
     assert_eq!(c1.hp.get(), 1600);
 }
+
+fn boost_test() {
+    let mut c1 = characters::Character::new(1, 70, 100, 2000);
+    // skill::boost(&mut c1);
+    // 
+}
