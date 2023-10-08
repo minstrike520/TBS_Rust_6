@@ -11,6 +11,10 @@ impl Attribute {
     pub fn get(&self) -> u32 {
         tools::tune(self.base, self.addition_percentage, self.addend)
     }
+    pub fn add(&mut self, addition_percentage:i32, addend:i32) {
+        self.addition_percentage += addition_percentage;
+        self.addend += addend;
+    }
     pub fn set(&mut self, addition_percentage:i32, addend:i32) {
         self.addition_percentage = addition_percentage;
         self.addend = addend;
@@ -101,7 +105,7 @@ impl Character {
             attributes: CharacterAttributes::new ( i_atk, i_spd, i_mhp ),
             hp: CharacterStat::new(i_mhp),
             actv: CharacterStat::new(constants::INIT_ACTV),
-        }
+                    }
     }
     pub fn mock_by_id(id: i32) -> Self {
         Self::new(id, 0, 0, 0)
