@@ -1,5 +1,6 @@
 pub mod attribute;
 pub mod stat;
+pub mod action_value;
 
 use crate::game::constants;
 
@@ -35,22 +36,6 @@ impl Character {
     pub fn mock_by_id(id: i32) -> Self {
         Self::new(id, 0, 0, 0)
     }
-    pub fn getf_left_steps(&self) -> f32 {
-        self.actv.getf() / self.attributes.spd.get() as f32
-    }
-    pub fn get_left_steps(&self) -> u32 {
-        self.getf_left_steps().ceil() as u32
-    }
-    pub fn stepf(&mut self, steps: f32) {
-        self.actv.costf( self.attributes.spd.get() as f32 * steps);
-    }
-    pub fn step(&mut self, steps: u32) { self.stepf(steps as f32) }
-    pub fn step_to_front(&mut self) -> f32 {
-        let remain_steps = self.getf_left_steps();
-        self.actv.cost_all();
-        remain_steps
-    }
-
     pub fn tune_mhp(&mut self, addition_percentage: i32, addend: i32) {
         self.attributes.mhp.set(addition_percentage, addend);
         self.hp.set_max(self.attributes.mhp.get());

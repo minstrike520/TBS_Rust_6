@@ -9,9 +9,11 @@ impl CharacterQueue {
         self.0.sort_by(|a,b| a.id.cmp(&b.id))
     }
     pub fn sort_by_left_steps(&mut self) {
+        use characters::action_value::HasActionValue;
         self.0.sort_by(|a,b| a.getf_left_steps().partial_cmp(&b.getf_left_steps()).unwrap());
     }
     pub fn proceed(&mut self) {
+        use characters::action_value::HasActionValue;
         self.sort_by_left_steps();
         let remain_steps = self.0[0].step_to_front();
         let mut character_in_charge = self.0.remove(0);
