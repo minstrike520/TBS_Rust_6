@@ -1,6 +1,7 @@
 use crate::game::{
     characters, tools
 };
+use characters::attribute::IAttribute;
 
 
 pub fn normal_attack (caster: &characters::Character, target: &mut characters::Character){

@@ -4,6 +4,7 @@ pub mod action_value;
 pub mod queue;
 
 use crate::game::constants;
+use attribute::IAttribute;
 
 pub struct Character {
     pub id: i32,

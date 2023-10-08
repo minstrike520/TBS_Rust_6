@@ -10,6 +10,7 @@ pub fn test_all() {
 }
 
 fn attribute_set_and_reset_test() {
+    use characters::attribute::IAttribute;
     let mut spd = characters::attribute::Attribute::new(100);
     assert_eq!(spd.get(), 100);
     spd.set(50, 30);
@@ -39,6 +40,7 @@ fn character_stat_set_max_test() {
 }
 
 fn character_tune_and_reset_mhp_test() {
+    use characters::attribute::IAttribute;
     let mut c1 = characters::Character::new(1, 70, 100, 2000);
     c1.hp.cost(200);
     c1.tune_mhp(20, 0);

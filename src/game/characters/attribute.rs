@@ -1,26 +1,34 @@
 use crate::game::tools;
 
-pub struct Attribute {
-    pub base: u32,
-    pub addition_percentage: i32,
-    pub addend: i32,
+pub trait IAttribute {
+    fn new(base: u32) -> Self;
+    fn get(&self) -> u32 ;
+    fn add(&mut self, addition_percentage:i32, addend:i32);
+    fn set(&mut self, addition_percentage:i32, addend:i32);
+    fn reset(&mut self);
 }
-impl Attribute {
-    pub fn new(base: u32) -> Self {
+
+pub struct Attribute {
+    base: u32,
+    addition_percentage: i32,
+    addend: i32,
+}
+impl IAttribute for Attribute {
+    fn new(base: u32) -> Self {
         Self { base, addition_percentage: 0, addend: 0 }
     }
-    pub fn get(&self) -> u32 {
+    fn get(&self) -> u32 {
         tools::tune(self.base, self.addition_percentage, self.addend)
     }
-    pub fn add(&mut self, addition_percentage:i32, addend:i32) {
+    fn add(&mut self, addition_percentage:i32, addend:i32) {
         self.addition_percentage += addition_percentage;
         self.addend += addend;
     }
-    pub fn set(&mut self, addition_percentage:i32, addend:i32) {
+    fn set(&mut self, addition_percentage:i32, addend:i32) {
         self.addition_percentage = addition_percentage;
         self.addend = addend;
     }
-    pub fn reset(&mut self) {
+    fn reset(&mut self) {
         self.addition_percentage = 0;
         self.addend = 0;
     }

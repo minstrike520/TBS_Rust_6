@@ -1,4 +1,5 @@
 use super::Character;
+use super::attribute::IAttribute;
 
 pub trait HasActionValue {
     fn getf_left_steps(&self) -> f32;

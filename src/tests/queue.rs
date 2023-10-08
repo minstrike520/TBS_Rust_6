@@ -38,7 +38,7 @@ fn queue_character_partial_eq_test() {
 fn queue_sort_by_left_steps_test() {
     let mut q1 = queue::CharacterQueue( vec![
         characters::Character::new(5, 10, 20, 100),
-        characters::Character::new(6, 10, 35, 100),
+        characters::Character::new(6, 10, 50, 100),
         characters::Character::new(2, 10, 15, 100),
     ]);
     q1.sort_by_left_steps();
@@ -52,11 +52,13 @@ fn queue_sort_by_left_steps_test() {
 fn queue_proceed_test() {
     let mut q1 = queue::CharacterQueue( vec![
         characters::Character::new(5, 10, 20, 100),
-        characters::Character::new(6, 10, 50, 100),
+        characters::Character::new(6, 10, 21, 100),
         characters::Character::new(2, 10, 19, 100),
     ]);
     q1.proceed();
     assert_eq!(q1.0[0], characters::Character::mock_by_id(5));
     q1.proceed();
     assert_eq!(q1.0[0], characters::Character::mock_by_id(2));
+    q1.proceed();
+    assert_eq!(q1.0[0], characters::Character::mock_by_id(6))
 }

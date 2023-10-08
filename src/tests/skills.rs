@@ -6,6 +6,7 @@ pub fn test_all() {
 }
 
 fn normal_attack_test() {
+    use characters::attribute::IAttribute;
     let c1 = characters::Character::new(1, 70, 100, 2000);
     assert_eq!(c1.attributes.atk.get(), 70);
     let mut c2 = characters::Character::new(2, 70, 100, 2000);
