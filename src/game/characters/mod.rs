@@ -1,6 +1,7 @@
 pub mod attribute;
 pub mod stat;
 pub mod action_value;
+pub mod queue;
 
 use crate::game::constants;
 

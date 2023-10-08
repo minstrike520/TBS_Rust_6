@@ -1,4 +1,5 @@
-use crate::game::{ queue, characters };
+use crate::game::characters;
+use characters::queue;
 
 pub fn test_all() {
     queue_sort_by_id_test();
