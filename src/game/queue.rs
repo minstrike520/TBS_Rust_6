@@ -1,6 +1,6 @@
-use crate::game::chars;
+use crate::game::characters;
 
-pub struct CharacterQueue(pub Vec<chars::Character>);
+pub struct CharacterQueue(pub Vec<characters::Character>);
 
 impl CharacterQueue {
     pub fn new() -> Self { Self(Vec::new()) }

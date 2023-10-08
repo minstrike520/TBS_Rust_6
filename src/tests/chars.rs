@@ -1,4 +1,4 @@
-use crate::game::chars;
+use crate::game::characters;
 
 pub fn test_all() {
     attribute_set_and_reset_test();
@@ -10,7 +10,7 @@ pub fn test_all() {
 }
 
 fn attribute_set_and_reset_test() {
-    let mut c1 = chars::Character::new(1, 70, 100, 2000);
+    let mut c1 = characters::Character::new(1, 70, 100, 2000);
     assert_eq!(c1.attributes.spd.get(), 100);
     c1.attributes.spd.set(50, 30);
     assert_eq!(c1.attributes.spd.get(), 180);
@@ -19,7 +19,7 @@ fn attribute_set_and_reset_test() {
 }
 
 fn character_stat_test() {
-    let mut c1 = chars::Character::new(1, 70, 100, 2000);
+    let mut c1 = characters::Character::new(1, 70, 100, 2000);
     c1.hp.cost(20);
     assert_eq!(c1.hp.get(), 1980);
     c1.hp.add(1000);
@@ -29,7 +29,7 @@ fn character_stat_test() {
 }
 
 fn character_stat_set_max_test() {
-    let mut c1 = chars::Character::new(1, 70, 100, 2000);
+    let mut c1 = characters::Character::new(1, 70, 100, 2000);
     c1.hp.set_max(2400);
     assert_eq!(c1.hp.get(), 2400);
     c1.hp.cost(400);
@@ -39,7 +39,7 @@ fn character_stat_set_max_test() {
 }
 
 fn character_tune_and_reset_mhp_test() {
-    let mut c1 = chars::Character::new(1, 70, 100, 2000);
+    let mut c1 = characters::Character::new(1, 70, 100, 2000);
     c1.hp.cost(200);
     c1.tune_mhp(20, 0);
     assert_eq!(c1.attributes.mhp.get(), 2400);
@@ -49,7 +49,7 @@ fn character_tune_and_reset_mhp_test() {
 }
 
 fn character_steps_test() {
-    let mut c1 = chars::Character::new(1, 70, 100, 2000);
+    let mut c1 = characters::Character::new(1, 70, 100, 2000);
     assert_eq!(c1.get_left_steps(), 100);
     c1.step(50);
     assert_eq!(c1.get_left_steps(), 50);
